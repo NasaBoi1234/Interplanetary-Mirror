@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What to code</title>
+<meta name="description" content="Random programming project ideas. Filter by type, difficulty, and language.">
+<style>
+  :root {
+    --bg: #f1f3f7;
+    --card: #ffffff;
+    --ink: #111827;
+    --muted: #4b5563;
+    --line: #d5dae3;
+    --accent: #2f4bff;
+    --accent-ink: #ffffff;
+    --chip: #e6eaf5;
+    --serif: Georgia, "Times New Roman", serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #12151c;
+      --card: #1b202b;
+      --ink: #eef1f7;
+      --muted: #a6afc0;
+      --line: #323a4a;
+      --accent: #7b8cff;
+      --accent-ink: #12151c;
+      --chip: #262d3c;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--bg); }
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.5;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; }
+  header h1 { font-family: var(--serif); font-size: 1.4rem; margin: 0 0 4px; }
+  header p { margin: 0; color: var(--muted); }
+
+  .filters { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0 20px; }
+  .filters label { display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem; color: var(--muted); flex: 1 1 160px; }
+  select {
+    font: inherit; color: var(--ink); background: var(--card);
+    border: 1px solid var(--line); border-radius: 6px; padding: 9px 10px;
+  }
+
+  .idea {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 32px 28px;
+    min-height: 260px;
+  }
+  .idea h2 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    line-height: 1.15;
+    margin: 0 0 14px;
+    letter-spacing: -0.01em;
+  }
+  .idea p { font-size: 1.1rem; max-width: 60ch; margin: 0 0 20px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .meta li { background: var(--chip); border-radius: 4px; padding: 3px 10px; font-size: 0.85rem; }
+  .idea.empty p { color: var(--muted); }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; align-items: center; }
+  button {
+    font: inherit; cursor: pointer; border-radius: 6px; padding: 10px 18px;
+    border: 1px solid var(--line); background: var(--card); color: var(--ink);
+  }
+  button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+  button:disabled { opacity: 0.5; cursor: default; }
+  .hint { color: var(--muted); font-size: 0.85rem; margin-left: auto; }
+
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+  .saved { margin-top: 48px; }
+  .saved h3 { font-family: var(--serif); font-size: 1.2rem; margin: 0 0 12px; }
+  .saved ul { list-style: none; margin: 0; padding: 0; }
+  .saved li {
+    display: flex; gap: 12px; align-items: center; justify-content: space-between;
+    padding: 12px 0; border-top: 1px solid var(--line);
+  }
+  .saved li:last-child { border-bottom: 1px solid var(--line); }
+  .saved .t { font-weight: 600; }
+  .saved .d { color: var(--muted); font-size: 0.9rem; }
+  .saved button { padding: 6px 12px; font-size: 0.85rem; flex-shrink: 0; }
+  .none { color: var(--muted); margin: 0; }
+
+  footer { margin-top: 48px; color: var(--muted); font-size: 0.85rem; }
+  footer a { color: inherit; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .idea.swap { animation: swap 0.18s ease-out; }
+    @keyframes swap { from { opacity: 0.2; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>What to code</h1>
+    <p>Pick filters, then get a project idea.</p>
+  </header>
+
+  <div class="filters">
+    <label>Type
+      <select id="fType">
+        <option value="">Any</option>
+        <option>Game</option>
+        <option>Web app</option>
+        <option>Tool</option>
+        <option>Bot</option>
+        <option>Data</option>
+        <option>Systems</option>
+      </select>
+    </label>
+    <label>Difficulty
+      <select id="fLevel">
+        <option value="">Any</option>
+        <option>Beginner</option>
+        <option>Intermediate</option>
+        <option>Advanced</option>
+      </select>
+    </label>
+    <label>Language
+      <select id="fLang">
+        <option value="">Any</option>
+        <option>Python</option>
+        <option>JavaScript</option>
+        <option>Lua</option>
+        <option>C#</option>
+        <option>C++</option>
+        <option>Rust</option>
+        <option>Java</option>
+        <option>Go</option>
+      </select>
+    </label>
+  </div>
+
+  <section class="idea" id="idea" aria-live="polite"></section>
+
+  <div class="actions">
+    <button class="primary" id="next">New idea</button>
+    <button id="save">Save idea</button>
+    <span class="hint">Space for a new idea</span>
+  </div>
+
+  <section class="saved">
+    <h3>Saved ideas</h3>
+    <div id="saved"></div>
+  </section>
+
+  <footer>Saved ideas stay in this browser only.</footer>
+</div>
+
+<script>
+(function () {
+  // [title, description, type, level, languages]
+  var RAW = [
+    // Games
+    ["Idle clicker", "Build a clicker game with upgrades that run on their own. Add offline progress that is calculated when the player returns.", "Game", "Beginner", "JavaScript, Lua, Python, C#"],
+    ["Shrinking snake", "Make Snake where the play area gets smaller over time. Add a score based on how long you survive.", "Game", "Beginner", "Any"],
+    ["Pong with tunable AI", "Make Pong with a computer opponent. Give the player sliders for AI speed and reaction delay.", "Game", "Beginner", "Any"],
+    ["Text adventure with save files", "Write a text adventure with rooms, items, and a parser for simple commands. Let the player save and load.", "Game", "Beginner", "Python, Java, C#"],
+    ["Wave shooter", "Build a top-down shooter where enemies spawn in waves that get harder. Add at least three enemy types.", "Game", "Intermediate", "Lua, C#, JavaScript, C++"],
+    ["Tower defense", "Make a tower defense game where enemies find their own path around towers you place.", "Game", "Intermediate", "Any"],
+    ["Couch party game", "Make a local multiplayer game with five short rounds and a combined score. Support keyboard and gamepad.", "Game", "Intermediate", "Lua, C#, JavaScript"],
+    ["Card game engine", "Write a card game engine that runs Blackjack first. Then add a second game using the same deck code.", "Game", "Intermediate", "Python, Java, C#, JavaScript"],
+    ["Pipe rerouting puzzle", "Make a puzzle game where the player rotates pipe pieces to connect a source to a drain. Generate levels automatically.", "Game", "Intermediate", "Any"],
+    ["Platformer with level editor", "Build a platformer and a separate editor that saves levels to a file the game can load.", "Game", "Advanced", "Lua, C#, C++, Rust"],
+    ["Roguelike dungeon", "Generate dungeon floors with rooms and corridors. Add turn-based combat, items, and permadeath.", "Game", "Advanced", "Python, C#, Rust, C++"],
+    ["Audio-driven rhythm game", "Read a song file, detect beats, and spawn notes from them. Score the player on timing.", "Game", "Advanced", "Python, C#, JavaScript, C++"],
+
+    // Web apps
+    ["Habit tracker", "Track daily habits with a streak counter. Store everything in localStorage so no server is needed.", "Web app", "Beginner", "JavaScript"],
+    ["Markdown notes with live preview", "Write a notes page with a text box on one side and rendered Markdown on the other.", "Web app", "Beginner", "JavaScript"],
+    ["Typing speed test", "Measure words per minute and accuracy. Show which keys the user misses most often.", "Web app", "Beginner", "JavaScript"],
+    ["Recipe scaler", "Enter a recipe and a serving count. Scale the amounts and convert between metric and US units.", "Web app", "Beginner", "JavaScript, Python"],
+    ["Unit converter", "Convert length, weight, temperature, and data size. Add a swap button and remember the last units used.", "Web app", "Beginner", "JavaScript"],
+    ["Kanban board", "Make a board with columns and cards you can drag between them. Save the board to localStorage.", "Web app", "Intermediate", "JavaScript"],
+    ["Pixel art editor", "Draw on a grid with a palette and an undo button. Export the result as a PNG.", "Web app", "Intermediate", "JavaScript"],
+    ["Live poll site", "Let people create a poll and share a link. Show votes updating live with websockets.", "Web app", "Intermediate", "JavaScript, Python, Go"],
+    ["URL shortener", "Make a service that turns long links into short ones and counts clicks on each.", "Web app", "Intermediate", "Python, JavaScript, Go, Java"],
+    ["Flashcards with spaced repetition", "Build a flashcard app that schedules each card based on how well you remembered it.", "Web app", "Intermediate", "JavaScript, Python"],
+    ["Shared drawing board", "Let several people draw on the same canvas at once. Sync strokes over websockets.", "Web app", "Advanced", "JavaScript, Go"],
+    ["Code playground", "Run user-written JavaScript or HTML inside a sandboxed iframe and show the output next to the editor.", "Web app", "Advanced", "JavaScript"],
+
+    // Tools
+    ["Command line todo list", "Add, list, and complete tasks from the terminal. Store them in a file.", "Tool", "Beginner", "Python, Go, Rust, JavaScript"],
+    ["Batch file renamer", "Rename many files with patterns like numbering and date prefixes. Add a dry run mode.", "Tool", "Beginner", "Python, Go, Rust"],
+    ["Password generator and checker", "Generate passwords with chosen rules and rate the strength of a typed one.", "Tool", "Beginner", "Any"],
+    ["Terminal pomodoro timer", "Run work and break timers in the terminal with a notification when each one ends.", "Tool", "Beginner", "Python, Go, Rust, JavaScript"],
+    ["Log analyzer", "Read a log file and summarize error counts, the most common messages, and when spikes happened.", "Tool", "Intermediate", "Python, Go, Rust"],
+    ["Dotfiles sync script", "Keep config files in a Git repo and write a script that links them into place on a new machine.", "Tool", "Intermediate", "Python, Go"],
+    ["Static site generator", "Turn a folder of Markdown files into a website with a template and an index page.", "Tool", "Intermediate", "Python, JavaScript, Go, Rust"],
+    ["Task scheduler", "Write a small cron-like program that runs commands on a schedule from a config file.", "Tool", "Intermediate", "Python, Go, Rust"],
+    ["Disk usage viewer", "Scan a folder and show which subfolders use the most space, in the terminal.", "Tool", "Intermediate", "Python, Go, Rust, C++"],
+    ["Simple version control", "Write a tiny Git-like tool that can commit, show history, and restore an earlier version.", "Tool", "Advanced", "Python, Go, Rust, C++"],
+
+    // Bots
+    ["Dice roller bot", "Make a Discord bot that rolls dice from commands like 2d6+3.", "Bot", "Beginner", "Python, JavaScript"],
+    ["Daily reminder bot", "Post a message in a channel at a set time each day. Let users change the time with a command.", "Bot", "Beginner", "Python, JavaScript"],
+    ["Chat game bot", "Make a bot that plays a game such as hangman or trivia with people in a channel and tracks scores.", "Bot", "Intermediate", "Python, JavaScript"],
+    ["Spam score moderator", "Give each message a spam score from simple rules. Delete or flag messages above a limit.", "Bot", "Intermediate", "Python, JavaScript"],
+    ["RSS feed poster", "Watch some RSS feeds and post new items to a Discord or Slack channel without repeats.", "Bot", "Intermediate", "Python, JavaScript, Go"],
+
+    // Data
+    ["Weather dashboard", "Pull data from a public weather API and show the next few days with a chart.", "Data", "Beginner", "Python, JavaScript"],
+    ["Sorting visualizer", "Animate bubble, insertion, merge, and quick sort. Let the user change the speed and array size.", "Data", "Beginner", "JavaScript, Python, Java"],
+    ["Price tracker", "Scrape the price of a product on a schedule and chart how it changes.", "Data", "Intermediate", "Python"],
+    ["Listening history analysis", "Export your music history and find your top artists by month and time of day.", "Data", "Intermediate", "Python"],
+    ["Maze generator and solver", "Generate mazes with one algorithm and solve them with another. Animate both.", "Data", "Intermediate", "Any"],
+    ["Markov chain text generator", "Train on a book or your own messages and generate new text that sounds similar.", "Data", "Intermediate", "Python, JavaScript, Rust"],
+    ["Neural network from scratch", "Write a small neural network without a library and train it on handwritten digits.", "Data", "Advanced", "Python, C++, Rust"],
+    ["Text search engine", "Index a folder of text files and return ranked results for a query.", "Data", "Advanced", "Python, Go, Rust, Java"],
+
+    // Systems
+    ["Sensor logger", "Read a sensor on a Raspberry Pi, save readings to a file, and show them on a simple web page.", "Systems", "Intermediate", "Python, Go"],
+    ["Tiny language interpreter", "Design a small programming language with variables, loops, and functions. Write the interpreter.", "Systems", "Advanced", "Python, C++, Rust, Java, Go"],
+    ["CHIP-8 emulator", "Emulate the CHIP-8 system and run classic ROMs. Add keyboard input and sound.", "Systems", "Advanced", "C++, Rust, C#, JavaScript, Python"],
+    ["Key-value database", "Build a database with get, set, and delete that survives restarts using a write-ahead log.", "Systems", "Advanced", "Rust, Go, C++, Python"],
+    ["HTTP server from sockets", "Write a web server using raw sockets that serves files and handles several clients at once.", "Systems", "Advanced", "Python, Go, Rust, C++, Java"],
+    ["Ray tracer", "Render spheres with lighting, shadows, and reflections to an image file.", "Systems", "Advanced", "C++, Rust, Python, C#"]
+  ];
+
+  var IDEAS = RAW.map(function (r, i) {
+    return { id: i, title: r[0], desc: r[1], type: r[2], level: r[3], langs: r[4].split(", ") };
+  });
+
+  var $ = function (id) { return document.getElementById(id); };
+  var el = { idea: $("idea"), next: $("next"), save: $("save"), saved: $("saved"),
+             type: $("fType"), level: $("fLevel"), lang: $("fLang") };
+
+  var current = null;
+  var savedIds = load();
+
+  function load() {
+    try {
+      var v = JSON.parse(localStorage.getItem("wtc-saved") || "[]");
+      return Array.isArray(v) ? v.filter(function (n) { return IDEAS[n]; }) : [];
+    } catch (e) { return []; }
+  }
+  function store() {
+    try { localStorage.setItem("wtc-saved", JSON.stringify(savedIds)); } catch (e) {}
+  }
+
+  function pool() {
+    return IDEAS.filter(function (i) {
+      if (el.type.value && i.type !== el.type.value) return false;
+      if (el.level.value && i.level !== el.level.value) return false;
+      if (el.lang.value && i.langs.indexOf("Any") === -1 && i.langs.indexOf(el.lang.value) === -1) return false;
+      return true;
+    });
+  }
+
+  function make(tag, text, cls) {
+    var n = document.createElement(tag);
+    if (text) n.textContent = text;
+    if (cls) n.className = cls;
+    return n;
+  }
+
+  function show(idea) {
+    current = idea;
+    el.idea.innerHTML = "";
+    el.idea.classList.remove("empty");
+    if (!idea) {
+      el.idea.classList.add("empty");
+      el.idea.appendChild(make("h2", "No matching ideas"));
+      el.idea.appendChild(make("p", "Change a filter to see more ideas."));
+      el.save.disabled = true;
+      return;
+    }
+    el.idea.appendChild(make("h2", idea.title));
+    el.idea.appendChild(make("p", idea.desc));
+    var meta = make("ul", "", "meta");
+    var langs = idea.langs[0] === "Any" ? "Any language" : idea.langs.join(", ");
+    [idea.type, idea.level, langs].forEach(function (t) { meta.appendChild(make("li", t)); });
+    el.idea.appendChild(meta);
+    el.idea.classList.remove("swap");
+    void el.idea.offsetWidth;
+    el.idea.classList.add("swap");
+    updateSaveButton();
+  }
+
+  function updateSaveButton() {
+    if (!current) { el.save.disabled = true; return; }
+    el.save.disabled = false;
+    el.save.textContent = savedIds.indexOf(current.id) === -1 ? "Save idea" : "Remove from saved";
+  }
+
+  function next() {
+    var p = pool();
+    if (!p.length) { show(null); return; }
+    var pick;
+    if (p.length === 1) pick = p[0];
+    else do { pick = p[Math.floor(Math.random() * p.length)]; } while (current && pick.id === current.id);
+    show(pick);
+  }
+
+  function renderSaved() {
+    el.saved.innerHTML = "";
+    if (!savedIds.length) {
+      el.saved.appendChild(make("p", "Nothing saved yet.", "none"));
+      return;
+    }
+    var ul = document.createElement("ul");
+    savedIds.forEach(function (id) {
+      var idea = IDEAS[id];
+      var li = document.createElement("li");
+      var box = document.createElement("div");
+      box.appendChild(make("div", idea.title, "t"));
+      box.appendChild(make("div", idea.type + ", " + idea.level, "d"));
+      var rm = make("button", "Remove");
+      rm.addEventListener("click", function () {
+        savedIds = savedIds.filter(function (n) { return n !== id; });
+        store(); renderSaved(); updateSaveButton();
+      });
+      li.appendChild(box);
+      li.appendChild(rm);
+      ul.appendChild(li);
+    });
+    el.saved.appendChild(ul);
+  }
+
+  el.next.addEventListener("click", next);
+  el.save.addEventListener("click", function () {
+    if (!current) return;
+    var at = savedIds.indexOf(current.id);
+    if (at === -1) savedIds.unshift(current.id); else savedIds.splice(at, 1);
+    store(); renderSaved(); updateSaveButton();
+  });
+  [el.type, el.level, el.lang].forEach(function (s) { s.addEventListener("change", next); });
+  document.addEventListener("keydown", function (e) {
+    if (e.code === "Space" && (e.target === document.body)) { e.preventDefault(); next(); }
+  });
+
+  renderSaved();
+  next();
+})();
+</script>
+</body>
+</html>
