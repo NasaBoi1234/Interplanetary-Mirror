@@ -165,7 +165,7 @@
 (function () {
   // [title, description, type, level, languages]
   var RAW = [
-    // Games
+    // ---------- Games ----------
     ["Idle clicker", "Build a clicker game with upgrades that run on their own. Add offline progress that is calculated when the player returns.", "Game", "Beginner", "JavaScript, Lua, Python, C#"],
     ["Shrinking snake", "Make Snake where the play area gets smaller over time. Add a score based on how long you survive.", "Game", "Beginner", "Any"],
     ["Pong with tunable AI", "Make Pong with a computer opponent. Give the player sliders for AI speed and reaction delay.", "Game", "Beginner", "Any"],
@@ -178,8 +178,93 @@
     ["Platformer with level editor", "Build a platformer and a separate editor that saves levels to a file the game can load.", "Game", "Advanced", "Lua, C#, C++, Rust"],
     ["Roguelike dungeon", "Generate dungeon floors with rooms and corridors. Add turn-based combat, items, and permadeath.", "Game", "Advanced", "Python, C#, Rust, C++"],
     ["Audio-driven rhythm game", "Read a song file, detect beats, and spawn notes from them. Score the player on timing.", "Game", "Advanced", "Python, C#, JavaScript, C++"],
+    ["Minesweeper", "Clone Minesweeper with custom board sizes and a first-click-is-safe rule.", "Game", "Beginner", "Any"],
+    ["Unbeatable tic-tac-toe", "Make tic-tac-toe with a computer player that uses minimax and never loses.", "Game", "Beginner", "Any"],
+    ["Memory card match", "Flip cards to find pairs. Track moves and best times.", "Game", "Beginner", "Any"],
+    ["One-button flyer", "Make a Flappy Bird style game where one button controls everything. Save the high score.", "Game", "Beginner", "Any"],
+    ["Breakout with power-ups", "Clone Breakout and add falling power-ups like wide paddle and multi-ball.", "Game", "Beginner", "Any"],
+    ["Hangman with categories", "Pick a word category, then play Hangman. Load words from a file.", "Game", "Beginner", "Any"],
+    ["Number guessing game", "Guess a hidden number with higher and lower hints. Add difficulty levels and a guess limit.", "Game", "Beginner", "Any"],
+    ["Rock paper scissors that learns", "Track the player's past moves and try to predict the next one. Show the win rate.", "Game", "Beginner", "Any"],
+    ["Whack-a-mole", "Spawn targets at random spots that disappear fast. Speed up as the score rises.", "Game", "Beginner", "Any"],
+    ["Falling object dodger", "Move left and right to avoid falling objects. Add pickups that change speed.", "Game", "Beginner", "Any"],
+    ["2048 clone", "Rebuild 2048 with sliding tiles, merging, and a game over check.", "Game", "Beginner", "Any"],
+    ["Wordle clone", "Make a five-letter word guessing game with colored hints and a new word each day.", "Game", "Beginner", "Any"],
+    ["Tamagotchi pet", "Make a virtual pet that gets hungry and tired over real time. Save its state between sessions.", "Game", "Beginner", "Any"],
+    ["Lemonade stand sim", "Set a price each day based on weather and see your profit. Keep a running total.", "Game", "Beginner", "Any"],
+    ["Text trading game", "Buy and sell goods in different towns where prices change every turn. Try to reach a target amount.", "Game", "Beginner", "Python, Java, C#, JavaScript"],
+    ["Yahtzee", "Roll five dice, hold some, and fill in a scoring sheet. Add a score calculator for each category.", "Game", "Beginner", "Any"],
+    ["Falling words typing game", "Words fall down the screen and you type them to clear them. Speed increases over time.", "Game", "Beginner", "Any"],
+    ["Reaction time tester", "Show a signal at a random moment and measure how fast the player responds. Keep a history.", "Game", "Beginner", "Any"],
+    ["Simon Says", "Show a growing color sequence and make the player repeat it.", "Game", "Beginner", "Any"],
+    ["Trivia with question packs", "Load questions from JSON files so anyone can make a pack. Add a timer and score.", "Game", "Beginner", "Any"],
+    ["Conway's Game of Life", "Let the player draw cells, then run the simulation. Add step, pause, and speed controls.", "Game", "Beginner", "Any"],
+    ["Connect Four with AI", "Make Connect Four with a computer player. Use minimax with a depth setting.", "Game", "Intermediate", "Any"],
+    ["Sudoku generator and solver", "Generate valid puzzles of different difficulty. Add a solver that shows each step.", "Game", "Intermediate", "Any"],
+    ["Tetris", "Clone Tetris with rotation, line clears, a ghost piece, and a hold slot.", "Game", "Intermediate", "Any"],
+    ["Asteroids", "Make a ship that rotates and thrusts with screen wrapping. Split asteroids when shot.", "Game", "Intermediate", "Any"],
+    ["Space Invaders", "Clone Space Invaders with rows of enemies that speed up as they get fewer.", "Game", "Intermediate", "Any"],
+    ["Checkers with AI", "Make Checkers with forced jumps and kings. Add a minimax opponent.", "Game", "Intermediate", "Any"],
+    ["Pac-Man style maze game", "Build a maze chase game where each ghost uses a different targeting rule.", "Game", "Intermediate", "Any"],
+    ["Falling sand sandbox", "Simulate sand, water, and walls on a grid. Let the player draw with each material.", "Game", "Intermediate", "Any"],
+    ["Top-down racing game", "Make a car with simple drift physics, lap timing, and a track made from checkpoints.", "Game", "Intermediate", "Any"],
+    ["Escape room puzzles", "Make a point-and-click room with items, locked doors, and a few puzzles.", "Game", "Intermediate", "JavaScript, Lua, C#, Python"],
+    ["Farming sim", "Plant, water, and harvest crops over a day and season cycle. Add a shop and inventory.", "Game", "Intermediate", "Lua, C#, JavaScript, Python"],
+    ["Battleship vs computer", "Place ships and take turns firing. Make the computer hunt smartly after a hit.", "Game", "Intermediate", "Any"],
+    ["Mastermind with solver", "Play Mastermind, then add a solver that finds the code in as few guesses as possible.", "Game", "Intermediate", "Any"],
+    ["Boggle word finder", "Generate a letter grid and find all valid words with a trie. Add a timed player mode.", "Game", "Intermediate", "Any"],
+    ["Lunar lander", "Land a ship using thrust and gravity with limited fuel. Score based on landing speed.", "Game", "Intermediate", "Any"],
+    ["Gravity slingshot puzzle", "Launch a probe past planets and use their gravity to reach a target.", "Game", "Intermediate", "Any"],
+    ["Endless runner", "Make a runner with procedurally generated obstacles that get harder over time.", "Game", "Intermediate", "Any"],
+    ["Match-three puzzle", "Swap tiles to match three, with cascades and combos. Add special tiles for matches of four or more.", "Game", "Intermediate", "Any"],
+    ["Networked Pong", "Make two players play Pong over the network. Handle lag with simple prediction.", "Game", "Intermediate", "Any"],
+    ["Online tic-tac-toe with lobbies", "Let players create or join rooms and play over websockets.", "Game", "Intermediate", "JavaScript, Python, Go"],
+    ["Idle game with prestige", "Add a prestige reset to an idle game that gives permanent bonuses.", "Game", "Intermediate", "Any"],
+    ["Klondike solitaire", "Make solitaire with drag and drop and an undo button. Detect when the game is won.", "Game", "Intermediate", "Any"],
+    ["Poker hand evaluator", "Rank any five to seven card hand. Simulate many hands to estimate odds.", "Game", "Intermediate", "Any"],
+    ["Boss rush game", "Make a game of short boss fights where each boss telegraphs its attacks.", "Game", "Intermediate", "Lua, C#, JavaScript, C++"],
+    ["Sokoban with level packs", "Push boxes onto targets. Load levels from text files and add undo.", "Game", "Intermediate", "Any"],
+    ["Snake that plays itself", "Write an AI that plays Snake using pathfinding. Compare strategies by average score.", "Game", "Intermediate", "Any"],
+    ["Gamepad tester and remapper", "Show every button and axis of a connected controller and let the user remap them.", "Game", "Intermediate", "Lua, C#, JavaScript, Python"],
+    ["Bullet hell with pattern scripts", "Make a shooter where bullet patterns are defined in a small script format.", "Game", "Advanced", "Lua, C#, C++, Rust"],
+    ["Tile RPG with quests", "Build a tile-based RPG with dialogue, an inventory, and a quest log.", "Game", "Advanced", "Lua, C#, C++, JavaScript"],
+    ["Fighting game with frame data", "Make a two-player fighter with hitboxes, hurtboxes, and a frame data display.", "Game", "Advanced", "C#, C++, Lua, Rust"],
+    ["Deck-building roguelike", "Build a card battler where you add cards to your deck after each fight.", "Game", "Advanced", "Any"],
+    ["Time rewind platformer", "Record the player's moves so they can rewind time to solve puzzles.", "Game", "Advanced", "Lua, C#, C++, Rust"],
+    ["Real-time strategy prototype", "Add unit selection, move orders, resource gathering, and a simple enemy AI.", "Game", "Advanced", "C#, C++, Rust, JavaScript"],
+    ["Grid tactics game", "Make a turn-based tactics game with movement ranges, attack ranges, and unit types.", "Game", "Advanced", "Any"],
+    ["Chess with simple AI", "Implement all chess rules, then add an engine with alpha-beta pruning.", "Game", "Advanced", "Any"],
+    ["Crossword generator", "Fit a word list into a valid crossword grid and generate the clues list.", "Game", "Advanced", "Any"],
+    ["Voxel sandbox", "Render a block world in chunks. Let the player break and place blocks.", "Game", "Advanced", "C++, Rust, C#, JavaScript"],
+    ["Raycasting first-person maze", "Make a Wolfenstein-style 3D view using raycasting on a 2D grid map.", "Game", "Advanced", "Any"],
+    ["Spaceship bridge simulator", "Build a game where several players run different stations on one ship over the network.", "Game", "Advanced", "Any"],
+    ["Procedural planet explorer", "Generate planets with terrain, biomes, and names. Let the player fly between them.", "Game", "Advanced", "Any"],
+    ["Racing game with ghost replays", "Record your best lap and race against it as a translucent ghost car.", "Game", "Intermediate", "Any"],
+    ["Cooking chaos co-op", "Make a co-op kitchen game with orders, timers, and stations that players share.", "Game", "Intermediate", "Lua, C#, JavaScript"],
+    ["Dungeon crawler with fog of war", "Reveal the map as the player explores. Remember the tiles already seen.", "Game", "Intermediate", "Any"],
+    ["Hex grid strategy game", "Build a game board on hexagons with movement and territory capture.", "Game", "Intermediate", "Any"],
+    ["Pinball", "Make a pinball table with flippers, bumpers, and simple physics.", "Game", "Intermediate", "Any"],
+    ["Golf game with physics", "Hit a ball across hills and obstacles with power and angle. Add multiple holes.", "Game", "Intermediate", "Any"],
+    ["Bomb defusal puzzle", "Make a game where you defuse a bomb by solving small puzzles in order before time runs out.", "Game", "Intermediate", "Any"],
+    ["Visual novel engine", "Write a small engine that loads scripts with text, characters, and choices.", "Game", "Intermediate", "Any"],
+    ["Survival game with crafting", "Gather resources, craft tools, and survive hunger and enemies over days.", "Game", "Advanced", "Any"],
+    ["Metroidvania map system", "Build rooms that connect and unlock with abilities. Add a map screen.", "Game", "Advanced", "Any"],
+    ["Stealth game with vision cones", "Add guards with sight cones and patrol paths. The player must avoid being seen.", "Game", "Intermediate", "Any"],
+    ["Asteroid mining idle game", "Send drones to mine asteroids and spend the ore on upgrades.", "Game", "Beginner", "Any"],
+    ["Number puzzle like Threes", "Slide numbered tiles and combine them. Score by the largest tile.", "Game", "Beginner", "Any"],
+    ["Dice battler", "Fight enemies by rolling dice and picking which results to use.", "Game", "Beginner", "Any"],
+    ["Cookie-style game with achievements", "Add an achievement system with popups and a list of unlocked items.", "Game", "Beginner", "Any"],
+    ["Maze runner with fog", "Navigate randomly generated mazes where you only see nearby tiles.", "Game", "Beginner", "Any"],
+    ["Fruit slicing game", "Slice objects that fly across the screen by dragging. Avoid bombs.", "Game", "Beginner", "Any"],
+    ["Bubble shooter", "Aim and shoot colored bubbles that pop in groups of three or more.", "Game", "Intermediate", "Any"],
+    ["Lights Out puzzle", "Toggle a light and its neighbors to turn them all off. Add a solver.", "Game", "Beginner", "Any"],
+    ["Tower stacking game", "Drop moving blocks to build a tower. Pieces that overhang get cut off.", "Game", "Beginner", "Any"],
+    ["Cave flyer", "Fly a ship through a scrolling cave with generated walls.", "Game", "Beginner", "Any"],
+    ["Spot the difference generator", "Create two images with small differences for the player to find.", "Game", "Intermediate", "Any"],
+    ["Racing against the clock puzzle pack", "Bundle several quick puzzles with one shared timer and total score.", "Game", "Intermediate", "Any"],
+    ["Asteroids co-op", "Let two players share one ship, one flying and one shooting.", "Game", "Intermediate", "Any"],
 
-    // Web apps
+    // ---------- Web apps ----------
     ["Habit tracker", "Track daily habits with a streak counter. Store everything in localStorage so no server is needed.", "Web app", "Beginner", "JavaScript"],
     ["Markdown notes with live preview", "Write a notes page with a text box on one side and rendered Markdown on the other.", "Web app", "Beginner", "JavaScript"],
     ["Typing speed test", "Measure words per minute and accuracy. Show which keys the user misses most often.", "Web app", "Beginner", "JavaScript"],
@@ -192,8 +277,87 @@
     ["Flashcards with spaced repetition", "Build a flashcard app that schedules each card based on how well you remembered it.", "Web app", "Intermediate", "JavaScript, Python"],
     ["Shared drawing board", "Let several people draw on the same canvas at once. Sync strokes over websockets.", "Web app", "Advanced", "JavaScript, Go"],
     ["Code playground", "Run user-written JavaScript or HTML inside a sandboxed iframe and show the output next to the editor.", "Web app", "Advanced", "JavaScript"],
+    ["To-do list with filters", "Add, edit, and complete tasks. Filter by status and sort by due date.", "Web app", "Beginner", "JavaScript"],
+    ["Pomodoro web timer", "Run work and break timers with a sound and a counter of sessions done.", "Web app", "Beginner", "JavaScript"],
+    ["Quote of the day page", "Show a new quote each day from a list. Let users save favorites.", "Web app", "Beginner", "JavaScript"],
+    ["Calculator with history", "Build a calculator with keyboard input and a list of past results.", "Web app", "Beginner", "JavaScript"],
+    ["Color palette generator", "Generate matching color sets and copy hex codes with one click. Lock colors you like.", "Web app", "Beginner", "JavaScript"],
+    ["Random name picker wheel", "Spin a wheel of names to pick one. Let users edit the list.", "Web app", "Beginner", "JavaScript"],
+    ["Tip and bill splitter", "Split a bill between people with tip and tax. Support uneven splits.", "Web app", "Beginner", "JavaScript"],
+    ["Event countdown page", "Show time left until dates the user adds. Save them locally.", "Web app", "Beginner", "JavaScript"],
+    ["Portfolio site with project filter", "Make a personal site with project cards that filter by tag.", "Web app", "Beginner", "JavaScript"],
+    ["Image gallery with lightbox", "Show a grid of thumbnails that open a full-size viewer with arrow key navigation.", "Web app", "Beginner", "JavaScript"],
+    ["Piano in the browser", "Play notes with the keyboard using the Web Audio API.", "Web app", "Beginner", "JavaScript"],
+    ["Meme generator", "Add top and bottom text to an uploaded image and download the result.", "Web app", "Beginner", "JavaScript"],
+    ["QR code generator", "Turn text or a link into a QR code image the user can download.", "Web app", "Beginner", "JavaScript, Python"],
+    ["Image to ASCII converter", "Turn an uploaded image into text characters by brightness.", "Web app", "Beginner", "JavaScript, Python"],
+    ["JSON formatter and validator", "Paste JSON to format it and show the exact line of any error.", "Web app", "Beginner", "JavaScript"],
+    ["Time zone converter", "Pick a time and see it in several time zones at once.", "Web app", "Beginner", "JavaScript"],
+    ["World clock", "Show live clocks for cities the user picks.", "Web app", "Beginner", "JavaScript"],
+    ["Link-in-bio page generator", "Fill a form and get a static page of links to host anywhere.", "Web app", "Beginner", "JavaScript"],
+    ["Reading list tracker", "Track books to read, in progress, and finished with ratings.", "Web app", "Beginner", "JavaScript"],
+    ["Animated landing page", "Build a landing page with scroll effects that respect reduced motion settings.", "Web app", "Beginner", "JavaScript"],
+    ["CSS art of one object", "Draw a single detailed object using only HTML and CSS.", "Web app", "Beginner", "JavaScript"],
+    ["Bouncing balls physics demo", "Simulate balls with gravity and wall collisions on a canvas.", "Web app", "Beginner", "JavaScript"],
+    ["Stopwatch with laps", "Start, stop, and record lap times with a saved history.", "Web app", "Beginner", "JavaScript"],
+    ["Expense tracker with charts", "Log spending by category and chart where the money goes each month.", "Web app", "Intermediate", "JavaScript, Python"],
+    ["Budget planner", "Set monthly limits per category and show how much is left.", "Web app", "Intermediate", "JavaScript"],
+    ["Chat room", "Make a chat site with usernames, rooms, and message history over websockets.", "Web app", "Intermediate", "JavaScript, Python, Go"],
+    ["Blog engine with admin page", "Write, edit, and publish posts from a login-protected page.", "Web app", "Intermediate", "Python, JavaScript, Go, Java"],
+    ["Quiz maker and taker", "Let a user build a quiz, share it, and see scores for people who took it.", "Web app", "Intermediate", "JavaScript, Python"],
+    ["Bookmark manager with tags", "Save links with tags and search across titles and tags.", "Web app", "Intermediate", "JavaScript, Python"],
+    ["Browser drum machine", "Make a step sequencer that plays loops with the Web Audio API.", "Web app", "Intermediate", "JavaScript"],
+    ["Audio visualizer", "Draw the frequencies of a playing song on a canvas in real time.", "Web app", "Intermediate", "JavaScript"],
+    ["Markdown to slides", "Turn a Markdown file into slides with arrow key navigation.", "Web app", "Intermediate", "JavaScript"],
+    ["Whiteboard app", "Draw with different pens, shapes, and an eraser. Save and load boards.", "Web app", "Intermediate", "JavaScript"],
+    ["Photo editor with filters", "Apply brightness, contrast, and blur to an image using the canvas API.", "Web app", "Intermediate", "JavaScript"],
+    ["Regex tester", "Show matches and capture groups highlighted as the user types a pattern.", "Web app", "Intermediate", "JavaScript"],
+    ["Text diff viewer", "Compare two texts and highlight added and removed lines.", "Web app", "Intermediate", "JavaScript, Python"],
+    ["Calendar with events", "Build a month view where users can add, edit, and delete events.", "Web app", "Intermediate", "JavaScript"],
+    ["Pastebin clone", "Save pasted text and get a short link with optional expiry.", "Web app", "Intermediate", "Python, JavaScript, Go, Java"],
+    ["Ranked choice voting", "Collect ranked ballots and run instant-runoff rounds with a clear result view.", "Web app", "Intermediate", "JavaScript, Python"],
+    ["Job application tracker", "Track applications with stages, dates, and notes.", "Web app", "Intermediate", "JavaScript, Python"],
+    ["Workout log with graphs", "Log sets and reps, then graph progress for each exercise.", "Web app", "Intermediate", "JavaScript, Python"],
+    ["Movie watchlist", "Search a public movie API, save titles to a list, and mark them watched.", "Web app", "Intermediate", "JavaScript, Python"],
+    ["Recipe book with search", "Store recipes and search by ingredient or tag.", "Web app", "Intermediate", "JavaScript, Python"],
+    ["Vocabulary trainer", "Practice words in another language with random order and a score.", "Web app", "Intermediate", "JavaScript, Python"],
+    ["Social feed clone", "Make posts, likes, and follows with a timeline of followed users.", "Web app", "Intermediate", "JavaScript, Python, Go, Java"],
+    ["Login system with sessions", "Build sign up, login, logout, and password hashing from scratch.", "Web app", "Intermediate", "Python, JavaScript, Go, Java"],
+    ["Shopping cart prototype", "Add items, change quantities, and compute totals with discounts.", "Web app", "Intermediate", "JavaScript"],
+    ["Interactive map with markers", "Show markers on a map and filter them by category.", "Web app", "Intermediate", "JavaScript"],
+    ["Seating chart planner", "Drag guests onto tables and flag conflicts.", "Web app", "Intermediate", "JavaScript"],
+    ["Group availability picker", "Let people mark times they are free and show the best overlap.", "Web app", "Intermediate", "JavaScript, Python"],
+    ["Offline progressive web app", "Make any small app installable and fully working without a connection.", "Web app", "Intermediate", "JavaScript"],
+    ["Site blocker extension", "Make a browser extension that blocks chosen sites during set hours.", "Web app", "Intermediate", "JavaScript"],
+    ["Highlight saver extension", "Save selected text from any page along with its link.", "Web app", "Intermediate", "JavaScript"],
+    ["Particle playground", "Spawn particles with sliders for gravity, speed, and color.", "Web app", "Intermediate", "JavaScript"],
+    ["Mandelbrot explorer", "Render the Mandelbrot set and zoom in with the mouse.", "Web app", "Intermediate", "JavaScript, Rust, C++"],
+    ["Solar system simulation", "Animate planets with real relative orbit speeds and a speed slider.", "Web app", "Intermediate", "JavaScript"],
+    ["Stock-style dashboard", "Show live-updating charts with fake data and several panel types.", "Web app", "Intermediate", "JavaScript"],
+    ["Collaborative text editor", "Let several people edit one document at once without overwriting each other.", "Web app", "Advanced", "JavaScript, Go"],
+    ["Video call app", "Connect two browsers with WebRTC and add text chat.", "Web app", "Advanced", "JavaScript"],
+    ["Browser spreadsheet", "Build a grid with formulas, cell references, and automatic recalculation.", "Web app", "Advanced", "JavaScript"],
+    ["Code editor with highlighting", "Build an editor with syntax highlighting and line numbers.", "Web app", "Advanced", "JavaScript"],
+    ["File sharing with expiring links", "Upload a file and get a link that stops working after a set time or number of downloads.", "Web app", "Advanced", "Python, JavaScript, Go, Java"],
+    ["Mind map editor", "Create nodes, connect them, and drag them around. Save to a file.", "Web app", "Advanced", "JavaScript"],
+    ["Terminal in the browser", "Make a fake shell with commands, a file system, and command history.", "Web app", "Advanced", "JavaScript"],
+    ["Real-time multiplayer lobby", "Build a lobby system with rooms, ready states, and a game start event.", "Web app", "Advanced", "JavaScript, Go, Python"],
+    ["Survey builder", "Make forms with different question types and view results as charts.", "Web app", "Intermediate", "JavaScript, Python"],
+    ["Invoice generator", "Fill in items and get a printable invoice page.", "Web app", "Beginner", "JavaScript"],
+    ["Daily journal with mood graph", "Write short entries and rate each day, then chart the ratings.", "Web app", "Beginner", "JavaScript"],
+    ["Password strength meter", "Score a typed password and explain what would make it stronger.", "Web app", "Beginner", "JavaScript"],
+    ["Pixel font maker", "Draw letters on a grid and export a font file or a spritesheet.", "Web app", "Advanced", "JavaScript"],
+    ["Sprite animation previewer", "Load a spritesheet and preview animations at a chosen frame rate.", "Web app", "Intermediate", "JavaScript"],
+    ["Wiki with page links", "Let users create pages and link between them with a simple syntax.", "Web app", "Intermediate", "Python, JavaScript, Go"],
+    ["Game leaderboard service", "Make an API and page where games can submit and show scores.", "Web app", "Intermediate", "Python, JavaScript, Go"],
+    ["Download page for your games", "Build a site that lists releases and links to the latest builds.", "Web app", "Beginner", "JavaScript"],
+    ["Changelog page", "Show a list of versions with dates and what changed, from a data file.", "Web app", "Beginner", "JavaScript"],
+    ["Screen time dashboard", "Log time spent on activities and show daily and weekly totals.", "Web app", "Intermediate", "JavaScript"],
+    ["Habit streak calendar", "Draw a grid of days colored by completion, like a contribution graph.", "Web app", "Beginner", "JavaScript"],
+    ["Interactive timeline", "Show events on a scrollable timeline with filters.", "Web app", "Intermediate", "JavaScript"],
+    ["Drag and drop file uploader", "Accept files by dropping them, show previews, and upload with progress bars.", "Web app", "Intermediate", "JavaScript"],
 
-    // Tools
+    // ---------- Tools ----------
     ["Command line todo list", "Add, list, and complete tasks from the terminal. Store them in a file.", "Tool", "Beginner", "Python, Go, Rust, JavaScript"],
     ["Batch file renamer", "Rename many files with patterns like numbering and date prefixes. Add a dry run mode.", "Tool", "Beginner", "Python, Go, Rust"],
     ["Password generator and checker", "Generate passwords with chosen rules and rate the strength of a typed one.", "Tool", "Beginner", "Any"],
@@ -204,15 +368,122 @@
     ["Task scheduler", "Write a small cron-like program that runs commands on a schedule from a config file.", "Tool", "Intermediate", "Python, Go, Rust"],
     ["Disk usage viewer", "Scan a folder and show which subfolders use the most space, in the terminal.", "Tool", "Intermediate", "Python, Go, Rust, C++"],
     ["Simple version control", "Write a tiny Git-like tool that can commit, show history, and restore an earlier version.", "Tool", "Advanced", "Python, Go, Rust, C++"],
+    ["File organizer", "Sort a messy folder into subfolders by file type or date.", "Tool", "Beginner", "Python, Go, Rust"],
+    ["TODO comment scanner", "Search a codebase for TODO and FIXME comments and list them with file and line.", "Tool", "Beginner", "Python, Go, Rust"],
+    ["Project line counter", "Count lines of code per language in a folder, skipping ignored paths.", "Tool", "Beginner", "Python, Go, Rust"],
+    ["Word frequency counter", "Count the most used words in a text file and print a top list.", "Tool", "Beginner", "Any"],
+    ["CSV to JSON converter", "Convert between CSV and JSON and handle quoted fields correctly.", "Tool", "Beginner", "Any"],
+    ["Bulk image resizer", "Resize every image in a folder to a given size and save copies.", "Tool", "Beginner", "Python, Go, Rust"],
+    ["PDF merger", "Combine several PDFs into one in a chosen order.", "Tool", "Beginner", "Python, JavaScript"],
+    ["Habit tracker CLI", "Mark habits done from the terminal and print your streaks.", "Tool", "Beginner", "Any"],
+    ["Flashcards in the terminal", "Quiz yourself from a text file of questions and answers.", "Tool", "Beginner", "Any"],
+    ["Desktop notifier", "Send a desktop notification when a command finishes or a time is reached.", "Tool", "Beginner", "Python, Go, Rust"],
+    ["Wallpaper changer", "Change the desktop wallpaper on a timer from a folder of images.", "Tool", "Beginner", "Python, Go, Rust"],
+    ["Config file validator", "Check a JSON or YAML file against rules and report each problem clearly.", "Tool", "Beginner", "Any"],
+    ["Environment variable manager", "Switch between named sets of environment variables for different projects.", "Tool", "Beginner", "Any"],
+    ["Checksum verifier", "Compute and compare file hashes to confirm a download is intact.", "Tool", "Beginner", "Any"],
+    ["Markdown table formatter", "Align the columns of Markdown tables in a file.", "Tool", "Beginner", "Any"],
+    ["Sitemap generator", "Crawl a small site or folder and write a sitemap.xml.", "Tool", "Beginner", "Python, JavaScript, Go"],
+    ["Font previewer", "Show sample text in every installed font and let the user filter them.", "Tool", "Beginner", "Python, JavaScript"],
+    ["Duplicate file finder", "Find identical files using hashes and offer to delete the extras.", "Tool", "Intermediate", "Python, Go, Rust"],
+    ["Clipboard history manager", "Keep a searchable list of recent clipboard entries.", "Tool", "Intermediate", "Python, Go, Rust"],
+    ["Markdown linter", "Check Markdown files for rules like heading order and broken links.", "Tool", "Intermediate", "Python, JavaScript, Go, Rust"],
+    ["Commit message checker", "Check commit messages against a format and reject ones that break it.", "Tool", "Intermediate", "Python, Go, JavaScript"],
+    ["Backup script with rotation", "Back up folders on a schedule and delete the oldest copies past a limit.", "Tool", "Intermediate", "Python, Go, Rust"],
+    ["Local network port scanner", "Scan your own machine or network for open ports and list the services.", "Tool", "Intermediate", "Python, Go, Rust"],
+    ["System monitor", "Show CPU, memory, and disk use with a live updating display.", "Tool", "Intermediate", "Python, Go, Rust, C++"],
+    ["Command line calculator", "Evaluate typed expressions with variables and functions.", "Tool", "Intermediate", "Any"],
+    ["Syntax highlighter", "Turn source code into colored HTML for a few languages.", "Tool", "Intermediate", "Python, JavaScript, Go, Rust"],
+    ["Argument parser library", "Write a library that parses flags, options, and subcommands and prints help text.", "Tool", "Intermediate", "Python, Go, Rust, JavaScript"],
+    ["File watcher that reruns commands", "Run a command every time files in a folder change.", "Tool", "Intermediate", "Python, Go, Rust"],
+    ["Notes CLI with search", "Add notes from the terminal and search them by text or tag.", "Tool", "Intermediate", "Python, Go, Rust"],
+    ["Time tracker CLI", "Start and stop timers for tasks and print weekly reports.", "Tool", "Intermediate", "Python, Go, Rust"],
+    ["Mod manager for a game", "Install, enable, disable, and remove mods for a game from a list.", "Tool", "Intermediate", "Python, C#, JavaScript"],
+    ["Save file editor", "Read and edit the save file of a game you like with a simple interface.", "Tool", "Intermediate", "Python, C#, JavaScript"],
+    ["Sprite atlas packer", "Pack many small images into one sheet and output a data file with their positions.", "Tool", "Intermediate", "Python, Go, Rust, C#"],
+    ["Sprite sheet animator", "Cut a sheet into frames and preview animations with timing.", "Tool", "Intermediate", "Any"],
+    ["Level format converter", "Convert level files from one format to another, such as Tiled to your own.", "Tool", "Intermediate", "Any"],
+    ["File encryption tool", "Encrypt and decrypt files with a password using a standard library.", "Tool", "Intermediate", "Python, Go, Rust"],
+    ["Secure notes with master password", "Store notes encrypted and unlock them with one password.", "Tool", "Intermediate", "Python, Go, Rust"],
+    ["Text expander", "Replace short typed abbreviations with longer text system-wide.", "Tool", "Intermediate", "Python, Go, Rust"],
+    ["Localization tool for game strings", "Manage translations in a table and export them to files a game can load.", "Tool", "Intermediate", "Any"],
+    ["Changelog generator", "Build a changelog from Git tags and commit messages.", "Tool", "Intermediate", "Python, Go, Rust, JavaScript"],
+    ["Dev server with live reload", "Serve a folder and refresh the browser when a file changes.", "Tool", "Intermediate", "Python, Go, Rust, JavaScript"],
+    ["Mock API server", "Serve fake responses from a JSON file so a front end can be built early.", "Tool", "Intermediate", "Python, Go, JavaScript"],
+    ["Tiny API client", "Send HTTP requests, save them in collections, and view formatted responses.", "Tool", "Intermediate", "Any"],
+    ["Webhook tester", "Receive webhooks at a local URL and show the full request.", "Tool", "Intermediate", "Python, Go, JavaScript"],
+    ["Broken link checker", "Crawl a site and list every link that fails.", "Tool", "Intermediate", "Python, Go, Rust, JavaScript"],
+    ["Image optimizer", "Reduce image file sizes while keeping them looking the same.", "Tool", "Intermediate", "Python, Go, Rust"],
+    ["Download manager with resume", "Download files in parts and continue after a failed connection.", "Tool", "Advanced", "Python, Go, Rust"],
+    ["Unit test framework", "Write a small test runner with assertions, setup, and a summary.", "Tool", "Advanced", "Any"],
+    ["Code formatter", "Format source code for a simple language with consistent style.", "Tool", "Advanced", "Any"],
+    ["Template engine", "Write a template language with variables, loops, and conditions.", "Tool", "Advanced", "Any"],
+    ["Make-style task runner", "Read a file of tasks with dependencies and run them in the right order.", "Tool", "Advanced", "Python, Go, Rust"],
+    ["Terminal file manager", "Browse folders, copy, move, and delete files with the keyboard.", "Tool", "Advanced", "Python, Go, Rust, C++"],
+    ["Terminal text editor", "Edit text files in the terminal with search, save, and undo.", "Tool", "Advanced", "Python, Go, Rust, C++"],
+    ["Password manager", "Store logins in an encrypted file with a generator and a search.", "Tool", "Advanced", "Python, Go, Rust"],
+    ["Screenshot tool with annotation", "Capture the screen and draw arrows and text before saving.", "Tool", "Advanced", "Python, C#, Rust, JavaScript"],
+    ["Tilemap editor", "Paint tiles on a grid with layers and export to a game-friendly format.", "Tool", "Advanced", "Any"],
+    ["Sound effect generator", "Generate retro sound effects from sliders and export WAV files.", "Tool", "Advanced", "Any"],
+    ["Window layout scripts", "Snap windows into saved layouts with keyboard shortcuts.", "Tool", "Advanced", "Python, Rust, C#"],
+    ["Package manager for your own scripts", "Install and update scripts from a Git repo with version pins.", "Tool", "Advanced", "Python, Go, Rust"],
+    ["Release packager", "Build, zip, and name game releases for each platform with one command.", "Tool", "Intermediate", "Python, Go, Rust"],
+    ["Asset hash cache", "Skip rebuilding assets that have not changed by tracking file hashes.", "Tool", "Intermediate", "Python, Go, Rust"],
+    ["Batch audio converter", "Convert a folder of audio files to a chosen format and bitrate.", "Tool", "Intermediate", "Python, Go"],
+    ["Clipboard to file saver", "Save the current clipboard text or image to a file with one command.", "Tool", "Beginner", "Python, Go, Rust"],
+    ["Cheat sheet viewer", "Show short command cheat sheets in the terminal from plain text files.", "Tool", "Beginner", "Any"],
+    ["Git repo status overview", "Scan a folder of repos and show which have uncommitted or unpushed changes.", "Tool", "Beginner", "Python, Go, Rust"],
+    ["SSH host manager", "List, add, and connect to saved SSH hosts with short names.", "Tool", "Beginner", "Python, Go, Rust"],
+    ["Quick note to file CLI", "Append a timestamped line to a daily notes file from the terminal.", "Tool", "Beginner", "Any"],
+    ["JSON diff tool", "Compare two JSON files and show what keys changed.", "Tool", "Intermediate", "Any"],
+    ["Directory tree printer", "Print a folder as a tree with file sizes and optional filters.", "Tool", "Beginner", "Any"],
+    ["Text to speech reader", "Read a text file aloud with a speed option.", "Tool", "Beginner", "Python, JavaScript"],
 
-    // Bots
+    // ---------- Bots ----------
     ["Dice roller bot", "Make a Discord bot that rolls dice from commands like 2d6+3.", "Bot", "Beginner", "Python, JavaScript"],
     ["Daily reminder bot", "Post a message in a channel at a set time each day. Let users change the time with a command.", "Bot", "Beginner", "Python, JavaScript"],
     ["Chat game bot", "Make a bot that plays a game such as hangman or trivia with people in a channel and tracks scores.", "Bot", "Intermediate", "Python, JavaScript"],
     ["Spam score moderator", "Give each message a spam score from simple rules. Delete or flag messages above a limit.", "Bot", "Intermediate", "Python, JavaScript"],
     ["RSS feed poster", "Watch some RSS feeds and post new items to a Discord or Slack channel without repeats.", "Bot", "Intermediate", "Python, JavaScript, Go"],
+    ["Welcome bot with roles", "Greet new members and give them a starting role. Let admins edit the message.", "Bot", "Beginner", "Python, JavaScript"],
+    ["Poll bot", "Create polls with reactions and show the final result in a message.", "Bot", "Beginner", "Python, JavaScript"],
+    ["Meme fetcher bot", "Post a random meme from a public source when a command is used.", "Bot", "Beginner", "Python, JavaScript"],
+    ["Telegram reminder bot", "Set reminders by chat and get a message at the right time.", "Bot", "Beginner", "Python, JavaScript"],
+    ["Weather bot", "Reply to a command with the weather for a city.", "Bot", "Beginner", "Python, JavaScript"],
+    ["Birthday reminder bot", "Store birthdays and announce them on the day.", "Bot", "Beginner", "Python, JavaScript"],
+    ["Voice channel stats bot", "Track time users spend in voice channels and show a leaderboard.", "Bot", "Beginner", "Python, JavaScript"],
+    ["Reaction role bot", "Give roles when users react to a message and remove them when they unreact.", "Bot", "Intermediate", "Python, JavaScript"],
+    ["Leveling bot", "Give XP for messages with a cooldown and show a rank card.", "Bot", "Intermediate", "Python, JavaScript"],
+    ["Ticket support bot", "Open private channels for support requests and close them with a transcript.", "Bot", "Intermediate", "Python, JavaScript"],
+    ["Economy bot", "Add currency, a daily reward, and a shop with items.", "Bot", "Intermediate", "Python, JavaScript"],
+    ["Trivia bot with leaderboard", "Ask timed questions and keep a server-wide score table.", "Bot", "Intermediate", "Python, JavaScript"],
+    ["Giveaway bot", "Run timed giveaways with entries by reaction and random winner picks.", "Bot", "Intermediate", "Python, JavaScript"],
+    ["Moderation log bot", "Log joins, leaves, deletes, edits, and bans to a channel.", "Bot", "Intermediate", "Python, JavaScript"],
+    ["Slack standup bot", "Ask team members questions each morning and post the answers in one thread.", "Bot", "Intermediate", "Python, JavaScript, Go"],
+    ["Reddit post watcher", "Watch a subreddit for keywords and send matches to a channel.", "Bot", "Intermediate", "Python, JavaScript"],
+    ["Stock price alert bot", "Send a message when a price crosses a limit you set.", "Bot", "Intermediate", "Python, JavaScript, Go"],
+    ["Game server status bot", "Show whether a game server is online and how many players are on it.", "Bot", "Intermediate", "Python, JavaScript, Go"],
+    ["Email digest bot", "Collect items from several sources and send one summary email each day.", "Bot", "Intermediate", "Python, JavaScript, Go"],
+    ["Website change alert bot", "Check a page on a schedule and message you when it changes.", "Bot", "Intermediate", "Python, JavaScript, Go"],
+    ["Starboard bot", "Copy messages that get enough star reactions to a highlights channel.", "Bot", "Intermediate", "Python, JavaScript"],
+    ["Translation bot", "Translate a message when a user reacts with a flag.", "Bot", "Intermediate", "Python, JavaScript"],
+    ["Appeals bot", "Let banned users submit an appeal that staff can accept or deny.", "Bot", "Intermediate", "Python, JavaScript"],
+    ["Bot for scheduling game nights", "Let members vote on times and post the winning slot with a reminder.", "Bot", "Intermediate", "Python, JavaScript"],
+    ["Music queue bot", "Play audio in a voice channel with a queue, skip, and pause.", "Bot", "Advanced", "Python, JavaScript"],
+    ["Chess bot for Lichess", "Connect to Lichess and play games with your own engine.", "Bot", "Advanced", "Python, Rust, Go, Java"],
+    ["Code runner bot", "Run code snippets sent in chat inside a sandbox and return the output.", "Bot", "Advanced", "Python, Go, Rust"],
+    ["Bot dashboard website", "Make a web page where server admins change the bot's settings.", "Bot", "Advanced", "Python, JavaScript"],
+    ["Role-playing game bot", "Let users make characters, fight monsters, and level up through commands.", "Bot", "Advanced", "Python, JavaScript"],
+    ["Anti-raid bot", "Detect many joins in a short time and lock the server automatically.", "Bot", "Advanced", "Python, JavaScript"],
+    ["Verification bot", "Make new members solve a challenge before they can see the server.", "Bot", "Intermediate", "Python, JavaScript"],
+    ["Scheduled announcement bot", "Queue announcements to post at a future date and time.", "Bot", "Beginner", "Python, JavaScript"],
+    ["Bug report bot", "Collect bug reports through a form and post them in a tracked channel.", "Bot", "Intermediate", "Python, JavaScript"],
+    ["Quote bot", "Save memorable messages and post a random one on request.", "Bot", "Beginner", "Python, JavaScript"],
+    ["Counting channel bot", "Enforce a counting game and reset when someone makes a mistake.", "Bot", "Beginner", "Python, JavaScript"],
+    ["Release announcer bot", "Post to a channel when a new release is published on GitHub.", "Bot", "Intermediate", "Python, JavaScript, Go"],
+    ["Raffle bot for streams", "Pick random viewers from chat who typed a keyword.", "Bot", "Beginner", "Python, JavaScript"],
 
-    // Data
+    // ---------- Data ----------
     ["Weather dashboard", "Pull data from a public weather API and show the next few days with a chart.", "Data", "Beginner", "Python, JavaScript"],
     ["Sorting visualizer", "Animate bubble, insertion, merge, and quick sort. Let the user change the speed and array size.", "Data", "Beginner", "JavaScript, Python, Java"],
     ["Price tracker", "Scrape the price of a product on a schedule and chart how it changes.", "Data", "Intermediate", "Python"],
@@ -221,14 +492,150 @@
     ["Markov chain text generator", "Train on a book or your own messages and generate new text that sounds similar.", "Data", "Intermediate", "Python, JavaScript, Rust"],
     ["Neural network from scratch", "Write a small neural network without a library and train it on handwritten digits.", "Data", "Advanced", "Python, C++, Rust"],
     ["Text search engine", "Index a folder of text files and return ranked results for a query.", "Data", "Advanced", "Python, Go, Rust, Java"],
+    ["Stock price visualizer", "Load historical prices from a file and draw line and candlestick charts.", "Data", "Beginner", "Python, JavaScript"],
+    ["Sorting algorithm benchmark", "Time several sorting algorithms on different input sizes and plot the results.", "Data", "Beginner", "Any"],
+    ["Prime sieve visualizer", "Animate the Sieve of Eratosthenes on a number grid.", "Data", "Beginner", "Any"],
+    ["Collatz explorer", "Chart the Collatz sequence for any starting number and find the longest under a limit.", "Data", "Beginner", "Any"],
+    ["Fibonacci and golden ratio", "Draw the spiral and show how the ratio of terms approaches the golden ratio.", "Data", "Beginner", "Any"],
+    ["Monte Carlo pi estimator", "Estimate pi by random points in a square and show the estimate converging.", "Data", "Beginner", "Any"],
+    ["Random walk simulator", "Simulate many random walkers and plot where they end up.", "Data", "Beginner", "Any"],
+    ["Birthday paradox simulation", "Simulate groups of people and measure how often two share a birthday.", "Data", "Beginner", "Any"],
+    ["Dice probability simulator", "Roll many dice and compare the results to the exact probabilities.", "Data", "Beginner", "Any"],
+    ["Run-length encoder", "Compress and decompress text with run-length encoding and report the ratio.", "Data", "Beginner", "Any"],
+    ["Caesar and Vigenere tool", "Encrypt, decrypt, and break these ciphers with frequency analysis.", "Data", "Beginner", "Any"],
+    ["Anagram finder", "Find all anagrams of a word from a dictionary file.", "Data", "Beginner", "Any"],
+    ["Palindrome checker", "Check words and phrases, ignoring punctuation and case, and find palindromes in a text.", "Data", "Beginner", "Any"],
+    ["Roman numeral converter", "Convert both ways and validate malformed numerals.", "Data", "Beginner", "Any"],
+    ["Prime factorization tool", "Break numbers into prime factors and show a factor tree.", "Data", "Beginner", "Any"],
+    ["Calendar generator", "Print a calendar for any month or year in text or HTML.", "Data", "Beginner", "Any"],
+    ["Space data viewer", "Show the astronomy picture and data from a public NASA API.", "Data", "Beginner", "Python, JavaScript"],
+    ["Sleep log with charts", "Enter sleep times and chart averages by week.", "Data", "Beginner", "Python, JavaScript"],
+    ["Public dataset explorer", "Load an open dataset and add filters, sorting, and a chart builder.", "Data", "Intermediate", "Python, JavaScript"],
+    ["Sports stats dashboard", "Pull stats for a team or league and show standings and trends.", "Data", "Intermediate", "Python, JavaScript"],
+    ["Bank CSV analyzer", "Read a bank export and group spending by category with monthly totals.", "Data", "Intermediate", "Python"],
+    ["Game stats tracker", "Log match results and show win rate by map, character, or time of day.", "Data", "Intermediate", "Python, JavaScript"],
+    ["Review sentiment scorer", "Score reviews as positive or negative using word lists and compare to the real ratings.", "Data", "Intermediate", "Python"],
+    ["Linear regression from scratch", "Fit a line to data with gradient descent and plot the fit.", "Data", "Intermediate", "Python, JavaScript"],
+    ["k-means visualizer", "Cluster 2D points and animate the centers moving.", "Data", "Intermediate", "Python, JavaScript"],
+    ["Image classifier with a library", "Train a small model on a public image set and test it on your own photos.", "Data", "Intermediate", "Python"],
+    ["Graph algorithm visualizer", "Animate BFS, DFS, Dijkstra, and A* on a grid with walls.", "Data", "Intermediate", "JavaScript, Python"],
+    ["Pathfinding comparison", "Run several pathfinding algorithms on the same maps and compare speed and path length.", "Data", "Intermediate", "Any"],
+    ["Boids flocking simulation", "Simulate a flock with separation, alignment, and cohesion rules.", "Data", "Intermediate", "Any"],
+    ["Cellular automata explorer", "Run 1D and 2D rule sets and let the user pick the rule.", "Data", "Intermediate", "Any"],
+    ["L-system plant generator", "Grow plants from rewrite rules and draw them with a turtle.", "Data", "Intermediate", "Any"],
+    ["Perlin noise terrain", "Generate a height map and color it by height.", "Data", "Intermediate", "Any"],
+    ["Huffman coding", "Compress text with Huffman codes and show the code table and savings.", "Data", "Intermediate", "Any"],
+    ["Bloom filter", "Implement a Bloom filter and measure its false positive rate.", "Data", "Intermediate", "Any"],
+    ["Trie autocomplete", "Suggest words as the user types using a trie built from a word list.", "Data", "Intermediate", "Any"],
+    ["Spell checker", "Suggest corrections for misspelled words using edit distance.", "Data", "Intermediate", "Any"],
+    ["Big number calculator", "Add, multiply, and compute factorials of numbers too large for normal integers.", "Data", "Intermediate", "Any"],
+    ["Matrix library", "Add, multiply, transpose, and invert matrices with tests.", "Data", "Intermediate", "Any"],
+    ["Equation solver", "Solve linear and quadratic equations and show the steps.", "Data", "Intermediate", "Any"],
+    ["Graphing calculator", "Plot functions typed as text with zoom and pan.", "Data", "Intermediate", "JavaScript, Python"],
+    ["Flight tracker", "Show live aircraft positions from a public data feed on a map.", "Data", "Intermediate", "JavaScript, Python"],
+    ["Earthquake map", "Plot recent earthquakes from a public feed and filter by magnitude.", "Data", "Intermediate", "JavaScript, Python"],
+    ["Moon phase calculator", "Compute the moon phase for any date and draw it.", "Data", "Intermediate", "Any"],
+    ["Habit correlation finder", "Log daily habits and moods, then find which pairs move together.", "Data", "Intermediate", "Python"],
+    ["Elo rating calculator", "Track players and update ratings after each match. Show a ranking table.", "Data", "Beginner", "Any"],
+    ["Sudoku difficulty rater", "Solve puzzles and rate how hard they are by the techniques needed.", "Data", "Intermediate", "Any"],
+    ["Word cloud generator", "Count words in a text and draw them with size by frequency.", "Data", "Intermediate", "Python, JavaScript"],
+    ["Plagiarism checker", "Compare two texts and highlight shared phrases.", "Data", "Intermediate", "Python, JavaScript"],
+    ["Travelling salesman solver", "Find short routes through many points with nearest neighbor and 2-opt.", "Data", "Intermediate", "Any"],
+    ["Knapsack and dynamic programming demos", "Visualize classic dynamic programming problems filling their tables.", "Data", "Intermediate", "Any"],
+    ["Spam filter with Naive Bayes", "Train on labeled messages and measure accuracy on a test set.", "Data", "Advanced", "Python, JavaScript, Rust"],
+    ["Decision tree from scratch", "Build a tree that splits data by information gain and plot it.", "Data", "Advanced", "Python"],
+    ["Movie recommendation engine", "Recommend titles from ratings using similarity between users or items.", "Data", "Advanced", "Python"],
+    ["Genetic algorithm", "Evolve something such as a path, a face made of shapes, or a walking creature.", "Data", "Advanced", "Any"],
+    ["N-body gravity simulation", "Simulate many bodies pulling on each other and draw their paths.", "Data", "Advanced", "Any"],
+    ["Fluid simulation", "Simulate smoke or water on a grid and let the user stir it with the mouse.", "Data", "Advanced", "Any"],
+    ["Cloth simulation", "Simulate a hanging cloth with points and springs.", "Data", "Advanced", "Any"],
+    ["RSA from scratch", "Generate keys, encrypt, and decrypt with your own big number code.", "Data", "Advanced", "Python, Java, Rust"],
+    ["Hash function implementation", "Implement SHA-256 or MD5 yourself and check it against a library.", "Data", "Advanced", "Any"],
+    ["Symbolic derivative calculator", "Parse an expression and output its derivative in simplified form.", "Data", "Advanced", "Any"],
+    ["Reinforcement learning agent", "Train an agent with Q-learning to solve a small grid game.", "Data", "Advanced", "Python"],
+    ["Time series forecaster", "Predict the next values of a series with moving averages and a simple model.", "Data", "Advanced", "Python"],
+    ["Image compression experiment", "Compress images with a simple transform and compare file size and quality.", "Data", "Advanced", "Python, C++, Rust"],
 
-    // Systems
+    // ---------- Systems ----------
     ["Sensor logger", "Read a sensor on a Raspberry Pi, save readings to a file, and show them on a simple web page.", "Systems", "Intermediate", "Python, Go"],
     ["Tiny language interpreter", "Design a small programming language with variables, loops, and functions. Write the interpreter.", "Systems", "Advanced", "Python, C++, Rust, Java, Go"],
     ["CHIP-8 emulator", "Emulate the CHIP-8 system and run classic ROMs. Add keyboard input and sound.", "Systems", "Advanced", "C++, Rust, C#, JavaScript, Python"],
     ["Key-value database", "Build a database with get, set, and delete that survives restarts using a write-ahead log.", "Systems", "Advanced", "Rust, Go, C++, Python"],
     ["HTTP server from sockets", "Write a web server using raw sockets that serves files and handles several clients at once.", "Systems", "Advanced", "Python, Go, Rust, C++, Java"],
-    ["Ray tracer", "Render spheres with lighting, shadows, and reflections to an image file.", "Systems", "Advanced", "C++, Rust, Python, C#"]
+    ["Ray tracer", "Render spheres with lighting, shadows, and reflections to an image file.", "Systems", "Advanced", "C++, Rust, Python, C#"],
+    ["Brainfuck interpreter", "Write an interpreter for Brainfuck, then a faster one that compiles loops ahead of time.", "Systems", "Beginner", "Any"],
+    ["LRU cache", "Build a cache that removes the least recently used item when full.", "Systems", "Beginner", "Any"],
+    ["Linked list and tree library", "Implement lists, stacks, queues, and binary trees with tests.", "Systems", "Beginner", "Any"],
+    ["Arduino LED patterns", "Make a few LEDs run patterns controlled by a button.", "Systems", "Beginner", "C++"],
+    ["Tween and easing library", "Write functions for common easing curves and a small tween manager.", "Systems", "Beginner", "Lua, C#, JavaScript, Python"],
+    ["JSON parser from scratch", "Parse JSON text into data structures with useful error messages.", "Systems", "Intermediate", "Any"],
+    ["Markdown parser from scratch", "Convert Markdown to HTML without a library, supporting headings, lists, and links.", "Systems", "Intermediate", "Any"],
+    ["Math expression parser", "Tokenize and parse expressions with correct operator precedence.", "Systems", "Intermediate", "Any"],
+    ["Forth interpreter", "Write a stack-based language with words you can define.", "Systems", "Intermediate", "Any"],
+    ["Chat server over TCP", "Let several clients connect, pick names, and send messages to each other.", "Systems", "Intermediate", "Python, Go, Rust, Java, C++"],
+    ["Rate limiter", "Limit how often a client can do something using a token bucket.", "Systems", "Intermediate", "Any"],
+    ["Job queue with workers", "Queue tasks and process them with several workers, with retries on failure.", "Systems", "Intermediate", "Python, Go, Rust, Java"],
+    ["Hash map from scratch", "Build a hash map with resizing and collision handling, then benchmark it.", "Systems", "Intermediate", "Any"],
+    ["Arduino weather station", "Read temperature and humidity and show them on a small display.", "Systems", "Intermediate", "C++"],
+    ["Raspberry Pi motion camera", "Record a clip or photo when motion is detected and save it with a timestamp.", "Systems", "Intermediate", "Python"],
+    ["Smart plug automation", "Control a smart plug on a schedule or by a web page on your network.", "Systems", "Intermediate", "Python, Go, JavaScript"],
+    ["Line following robot", "Make a small robot follow a line using sensors and a control loop.", "Systems", "Intermediate", "C++, Python"],
+    ["Home dashboard on an old tablet", "Show clock, weather, and calendar on a page that runs full screen.", "Systems", "Intermediate", "JavaScript, Python"],
+    ["Plant watering system", "Read soil moisture and run a pump when it is dry. Log each watering.", "Systems", "Intermediate", "C++, Python"],
+    ["LED matrix game", "Play a small game on an LED matrix with buttons for input.", "Systems", "Intermediate", "C++, Python"],
+    ["Serial port monitor", "Read data from a serial device and show it as text and a live graph.", "Systems", "Intermediate", "Python, C#, Rust, Go"],
+    ["MIDI controller", "Send MIDI notes from buttons or knobs to music software.", "Systems", "Intermediate", "C++, Python"],
+    ["WAV file reader and writer", "Parse the WAV format and generate tones into new files.", "Systems", "Intermediate", "Any"],
+    ["Pathfinding library", "Package A* with grids, weights, and diagonal options for use in games.", "Systems", "Intermediate", "Lua, C#, Rust, Go, JavaScript"],
+    ["Particle system library", "Write a reusable particle emitter with configurable behavior.", "Systems", "Intermediate", "Lua, C#, JavaScript, C++"],
+    ["Input mapping library", "Map keys, buttons, and axes to named actions that games can query.", "Systems", "Intermediate", "Lua, C#, JavaScript, C++"],
+    ["Save system library", "Save and load game state to files with versioning for old saves.", "Systems", "Intermediate", "Lua, C#, JavaScript, C++"],
+    ["Dialogue system library", "Load branching dialogue from files and expose it to a game.", "Systems", "Intermediate", "Lua, C#, JavaScript, C++"],
+    ["Replay recorder", "Record player input and play it back deterministically.", "Systems", "Intermediate", "Lua, C#, JavaScript, C++"],
+    ["Memory allocator", "Write malloc and free on top of a big block of memory and test fragmentation.", "Systems", "Advanced", "C++, Rust"],
+    ["Garbage collector", "Add mark and sweep collection to a toy virtual machine.", "Systems", "Advanced", "C++, Rust, Go, Java"],
+    ["Bytecode virtual machine", "Define an instruction set and write a VM that runs it.", "Systems", "Advanced", "Any"],
+    ["Assembler for a made-up CPU", "Design a tiny instruction set and write an assembler for it.", "Systems", "Advanced", "Any"],
+    ["CPU simulator", "Simulate registers, memory, and an instruction cycle with a step debugger.", "Systems", "Advanced", "Any"],
+    ["Game Boy emulator", "Emulate the CPU, graphics, and input of the Game Boy.", "Systems", "Advanced", "C++, Rust, C#"],
+    ["NES emulator", "Emulate the CPU and picture unit and run simple ROMs.", "Systems", "Advanced", "C++, Rust, C#"],
+    ["Regex engine", "Implement matching for a subset of regular expressions with an automaton.", "Systems", "Advanced", "Any"],
+    ["Compiler to bytecode", "Compile a small language to your own VM instructions.", "Systems", "Advanced", "Any"],
+    ["Lisp interpreter", "Parse and evaluate Lisp with functions, lists, and closures.", "Systems", "Advanced", "Any"],
+    ["Shell with pipes", "Write a shell that runs programs, pipes output, and redirects files.", "Systems", "Advanced", "C++, Rust, Go, Python"],
+    ["Gap buffer text editor core", "Implement the data structure behind a text editor and test it with edits.", "Systems", "Advanced", "Any"],
+    ["Filesystem in userspace", "Expose a custom store, such as a zip or database, as a mounted folder.", "Systems", "Advanced", "C++, Rust, Go, Python"],
+    ["Load balancer", "Distribute requests across several servers with health checks.", "Systems", "Advanced", "Go, Rust, Python, Java"],
+    ["Reverse proxy", "Forward requests to other servers and add caching and logging.", "Systems", "Advanced", "Go, Rust, Python, Java"],
+    ["DNS resolver", "Send DNS queries over UDP and parse the answers.", "Systems", "Advanced", "Python, Go, Rust"],
+    ["Packet sniffer for your own network", "Capture packets on your machine and show a summary by protocol.", "Systems", "Advanced", "Python, Go, Rust, C++"],
+    ["Multiplayer server with rollback", "Build a game server that uses rollback to hide lag between two players.", "Systems", "Advanced", "Any"],
+    ["Thread pool", "Build a pool of worker threads that run submitted tasks.", "Systems", "Advanced", "C++, Rust, Java, Go"],
+    ["B-tree", "Implement a B-tree with insert, search, and delete.", "Systems", "Advanced", "Any"],
+    ["Raft consensus toy", "Implement leader election and log replication across a few local nodes.", "Systems", "Advanced", "Go, Rust, Java"],
+    ["Bootloader that prints text", "Write code that boots on an emulator and prints a message.", "Systems", "Advanced", "C++, Rust"],
+    ["Tiny kernel", "Boot a minimal kernel in an emulator with screen output and keyboard input.", "Systems", "Advanced", "C++, Rust"],
+    ["Microcontroller game controller", "Build a USB controller from buttons and a microcontroller.", "Systems", "Advanced", "C++, Python"],
+    ["G-code generator", "Generate toolpaths from shapes for a 3D printer or CNC machine.", "Systems", "Advanced", "Python, Rust, C++"],
+    ["Software synthesizer", "Generate waveforms, envelopes, and filters and play them from the keyboard.", "Systems", "Advanced", "Any"],
+    ["Audio effects", "Write delay, reverb, or distortion that processes audio in real time.", "Systems", "Advanced", "C++, Rust, Python, JavaScript"],
+    ["Image decoder", "Decode a format such as BMP or PNG without a library.", "Systems", "Advanced", "Any"],
+    ["Software 3D renderer", "Draw 3D models with your own rasterizer, depth buffer, and lighting.", "Systems", "Advanced", "C++, Rust, C#, JavaScript, Python"],
+    ["Entity component system", "Write an ECS library with queries, systems, and fast iteration.", "Systems", "Advanced", "C++, Rust, C#, Lua"],
+    ["Small game engine", "Build a 2D engine with scenes, sprites, input, and audio.", "Systems", "Advanced", "C++, Rust, C#, Lua"],
+    ["Scripting language for modding", "Embed a scripting language in a game so players can write mods.", "Systems", "Advanced", "C++, Rust, C#, Lua"],
+    ["Physics engine", "Add rigid bodies, collision detection, and resolution for shapes.", "Systems", "Advanced", "C++, Rust, C#, JavaScript"],
+    ["UI toolkit for a game framework", "Build buttons, sliders, text fields, and layouts for LOVE or another engine.", "Systems", "Advanced", "Lua, C#, C++"],
+    ["Wave function collapse generator", "Generate levels or textures from example tiles with local rules.", "Systems", "Advanced", "Any"],
+    ["Network library for games", "Wrap sockets with messages, reliability options, and a simple lobby.", "Systems", "Advanced", "C++, Rust, C#, Go"],
+    ["Profiler for your own code", "Measure how long functions take and print a report of the slowest ones.", "Systems", "Intermediate", "Python, Lua, JavaScript, C#"],
+    ["Hot reload for scripts", "Reload code while a program runs without restarting it.", "Systems", "Intermediate", "Lua, Python, JavaScript, C#"],
+    ["Binary file viewer", "Show a file as a hex dump with an ASCII column and search.", "Systems", "Intermediate", "Any"],
+    ["Simple regex-based tokenizer library", "Split source text into tokens using ordered patterns with line and column info.", "Systems", "Intermediate", "Any"],
+    ["Embedded logger", "Write a small logging library with levels, timestamps, and file output.", "Systems", "Beginner", "Any"],
+    ["Event system library", "Build publish and subscribe events that decoupled parts of a program can use.", "Systems", "Beginner", "Any"],
+    ["State machine library", "Define states and transitions in data and run them with callbacks.", "Systems", "Beginner", "Any"],
+    ["Object pool", "Reuse objects instead of creating new ones and measure the difference.", "Systems", "Intermediate", "Any"]
   ];
 
   var IDEAS = RAW.map(function (r, i) {
@@ -240,16 +647,29 @@
              type: $("fType"), level: $("fLevel"), lang: $("fLang") };
 
   var current = null;
-  var savedIds = load();
+  var savedKeys = load();
+
+  // Saved ideas are stored by title so the list can grow without breaking old saves.
+  function keyOf(idea) { return idea.title; }
+  function byKey(k) {
+    for (var i = 0; i < IDEAS.length; i++) if (IDEAS[i].title === k) return IDEAS[i];
+    return null;
+  }
 
   function load() {
     try {
-      var v = JSON.parse(localStorage.getItem("wtc-saved") || "[]");
-      return Array.isArray(v) ? v.filter(function (n) { return IDEAS[n]; }) : [];
+      var v = JSON.parse(localStorage.getItem("wtc-saved-titles") || "[]");
+      if (!Array.isArray(v)) v = [];
+      var old = JSON.parse(localStorage.getItem("wtc-saved") || "[]");
+      if (Array.isArray(old) && old.length && !v.length) {
+        // Older saves used index numbers, which map to the first 50 ideas of the earlier list.
+        old = old.filter(function (n) { return typeof n === "number" && RAW[n]; });
+      }
+      return v.filter(function (k) { return byKey(k); });
     } catch (e) { return []; }
   }
   function store() {
-    try { localStorage.setItem("wtc-saved", JSON.stringify(savedIds)); } catch (e) {}
+    try { localStorage.setItem("wtc-saved-titles", JSON.stringify(savedKeys)); } catch (e) {}
   }
 
   function pool() {
@@ -294,7 +714,7 @@
   function updateSaveButton() {
     if (!current) { el.save.disabled = true; return; }
     el.save.disabled = false;
-    el.save.textContent = savedIds.indexOf(current.id) === -1 ? "Save idea" : "Remove from saved";
+    el.save.textContent = savedKeys.indexOf(keyOf(current)) === -1 ? "Save idea" : "Remove from saved";
   }
 
   function next() {
@@ -308,20 +728,21 @@
 
   function renderSaved() {
     el.saved.innerHTML = "";
-    if (!savedIds.length) {
+    if (!savedKeys.length) {
       el.saved.appendChild(make("p", "Nothing saved yet.", "none"));
       return;
     }
     var ul = document.createElement("ul");
-    savedIds.forEach(function (id) {
-      var idea = IDEAS[id];
+    savedKeys.forEach(function (k) {
+      var idea = byKey(k);
+      if (!idea) return;
       var li = document.createElement("li");
       var box = document.createElement("div");
       box.appendChild(make("div", idea.title, "t"));
       box.appendChild(make("div", idea.type + ", " + idea.level, "d"));
       var rm = make("button", "Remove");
       rm.addEventListener("click", function () {
-        savedIds = savedIds.filter(function (n) { return n !== id; });
+        savedKeys = savedKeys.filter(function (n) { return n !== k; });
         store(); renderSaved(); updateSaveButton();
       });
       li.appendChild(box);
@@ -334,8 +755,9 @@
   el.next.addEventListener("click", next);
   el.save.addEventListener("click", function () {
     if (!current) return;
-    var at = savedIds.indexOf(current.id);
-    if (at === -1) savedIds.unshift(current.id); else savedIds.splice(at, 1);
+    var k = keyOf(current);
+    var at = savedKeys.indexOf(k);
+    if (at === -1) savedKeys.unshift(k); else savedKeys.splice(at, 1);
     store(); renderSaved(); updateSaveButton();
   });
   [el.type, el.level, el.lang].forEach(function (s) { s.addEventListener("change", next); });
